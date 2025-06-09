@@ -1,0 +1,14 @@
+.idea/
+__pycache__/
+db.sqlite3
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.vscode/*
+media/
+send_mail/
+.vs/
