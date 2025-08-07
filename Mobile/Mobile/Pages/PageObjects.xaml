@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mobile.Pages"
+             x:Class="Mobile.Pages.PageObjects"
+             Title="Предметы">
+    <ScrollView>
+        <Grid Margin="10">
+            <CollectionView x:Name="ListObjects">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="12" 
+                           BackgroundColor="White"
+                           HasShadow="True"
+                           Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:PageObjects}}, Path=ItemTappedCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                                    
+                            <Grid ColumnDefinitions="Auto,*" 
+                              RowDefinitions="Auto"
+                              Padding="15">
+                                <!-- Кружок с номером -->
+                                <Frame Grid.Column="0"
+                                   CornerRadius="20"
+                                   HeightRequest="40"
+                                   WidthRequest="40"
+                                   BackgroundColor="#512BD4"
+                                   Padding="0"
+                                   VerticalOptions="Center">
+                                    <Label Text="{Binding Id}"
+                                       TextColor="White"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                </Frame>
+
+                                <!-- Название предмета -->
+                                <Label Grid.Column="1"
+                                   Text="{Binding Name}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"
+                                   Margin="15,0,0,0"
+                                   VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

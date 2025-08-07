@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Pages.PageSubsection"
+             Title="{Binding Topic.Name}">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <!-- Заголовок темы -->
+            <Label Text="{Binding Topic.Name}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Текущий вопрос -->
+            <Frame CornerRadius="12"
+                   BackgroundColor="#512BD4"
+                   Padding="15">
+                <Label Text="{Binding CurrentQuestion.Name}"
+                       FontSize="18"
+                       TextColor="White"
+                       FontAttributes="Bold" />
+            </Frame>
+
+            <!-- Описание вопроса -->
+            <Label Text="Введите ваш ответ:"
+                   FontSize="16" />
+
+            <!-- Поле для ответа -->
+            <Entry Placeholder="Ваш ответ..."
+                   Text="{Binding UserAnswer}"
+                   FontSize="16"
+                   HeightRequest="60" />
+
+            <!-- Кнопка проверки -->
+            <Button Text="Проверить ответ"
+                    Command="{Binding CheckAnswerCommand}"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <!-- Результат проверки -->
+            <Frame IsVisible="{Binding IsAnswerChecked}"
+                   CornerRadius="12"
+                   BackgroundColor="{Binding ResultColor}"
+                   Padding="15">
+                <VerticalStackLayout>
+                    <Label Text="{Binding ResultMessage}"
+                           FontSize="16"
+                           TextColor="White"
+                           FontAttributes="Bold" />
+                    <Label Text="Правильный ответ:"
+                           FontSize="14"
+                           TextColor="White"
+                           Margin="0,10,0,0" />
+                    <Label Text="{Binding CurrentQuestion.Description}"
+                           FontSize="14"
+                           TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Кнопка следующего вопроса -->
+            <Button IsVisible="{Binding IsAnswerChecked}"
+                    Text="Следующий вопрос"
+                    Command="{Binding NextQuestionCommand}"
+                    BackgroundColor="#2B0B98"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

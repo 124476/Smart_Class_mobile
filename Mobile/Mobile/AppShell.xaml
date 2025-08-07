@@ -8,8 +8,8 @@
     Title="Mobile">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        Title="Главная"
+        ContentTemplate="{DataTemplate local:Pages.PageObjects}"
         Route="MainPage" />
 
 </Shell>

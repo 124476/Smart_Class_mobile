@@ -19,6 +19,8 @@ namespace Mobile
     		builder.Logging.AddDebug();
 #endif
 
+            App.InitilizationDB();
+                
             return builder.Build();
         }
     }
